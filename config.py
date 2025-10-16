@@ -19,11 +19,11 @@ class TrainConfig:
     temperature: float = 1.0
 
     # PPO training
-    outer_steps: int = 500
+    outer_steps: int = 10
     batch_size: int = 64  # prompts per rollout step
     ppo_epochs: int = 4
     mini_batch_size: int = 16
-    lr: float = 1.41e-5
+    lr: float = 5e-6
     betas: Tuple[float, float] = (0.9, 0.999)
     weight_decay: float = 0.0
     max_grad_norm: float = 1.0
@@ -34,14 +34,15 @@ class TrainConfig:
     clip_range: float = 0.2
     clip_range_vf: float = 0.2
     vf_coef: float = 0.1
-    ent_coef: float = 0.0
-    kl_coef: float = 0.1  # β
+    ent_coef: float = 0.02
+    kl_coef: float = 1  # β
 
     # Repro
     seed: int = 0
 
     # Output
     ckpt_dir: str = "ckpts"
+    log_interval: int = 1
 
 
 @dataclass

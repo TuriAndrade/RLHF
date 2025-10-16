@@ -120,7 +120,7 @@ def main():
             pad_id=tok.pad_token_id,
         )
 
-        if step % 10 == 0:
+        if step % cfg.log_interval == 0:
             with torch.no_grad():
                 avg_kl = (kl.sum() / (gen_masks.sum() + 1e-8)).item()
                 print(
