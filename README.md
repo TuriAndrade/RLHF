@@ -75,7 +75,7 @@ $$
 
 ### 1. Install dependencies
 ```bash
-pip install torch transformers datasets
+pip install -r requirements.txt
 ```
 
 ### 2. Train the policy
