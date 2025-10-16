@@ -40,6 +40,9 @@ class TrainConfig:
     # Repro
     seed: int = 0
 
+    # Output
+    ckpt_dir: str = "ckpts"
+
 
 @dataclass
 class EvalConfig:

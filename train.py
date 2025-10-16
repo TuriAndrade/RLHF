@@ -128,11 +128,13 @@ def main():
                 )
 
     # Save checkpoint
-    os.makedirs("ckpts", exist_ok=True)
-    policy.lm.save_pretrained("ckpts/policy_lm")
-    tok.save_pretrained("ckpts/policy_lm")
-    torch.save(policy.value_head.state_dict(), "ckpts/value_head.pt")
-    print("Saved to ckpts/")
+    os.makedirs(cfg.ckpt_dir, exist_ok=True)
+    policy.lm.save_pretrained(os.path.join(cfg.ckpt_dir, "policy_lm"))
+    tok.save_pretrained(os.path.join(cfg.ckpt_dir, "policy_lm"))
+    torch.save(
+        policy.value_head.state_dict(), os.path.join(cfg.ckpt_dir, "value_head.pt")
+    )
+    print(f"Saved to {cfg.ckpt_dir}/")
 
 
 if __name__ == "__main__":
