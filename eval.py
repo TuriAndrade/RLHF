@@ -1,4 +1,4 @@
-import argparse, random, csv
+import random, csv
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from config import EvalConfig
@@ -13,7 +13,7 @@ def eval_batch(policy_lm, ref_lm, tok, rm, prompts, params: EvalConfig):
     input_ids, attn = tokenize_batch(tok, prompts, params.max_prompt_len, params.device)
     pad_id = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
 
-    # Generate with both models (same decoding settings)
+    # Generate with both models
     full_pol = sample_generate(
         policy_lm,
         input_ids,
@@ -45,7 +45,6 @@ def eval_batch(policy_lm, ref_lm, tok, rm, prompts, params: EvalConfig):
     extr_ref = rm.score(texts_ref)  # (B,)
 
     # For logging: generated length per sample
-    B, T = full_pol.shape
     nonpad_len = (full_pol != pad_id).long().sum(dim=1)  # (B,)
     gen_len = (nonpad_len - prompt_len).clamp_min(0)  # (B,)
 

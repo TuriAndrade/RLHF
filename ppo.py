@@ -33,7 +33,7 @@ def ppo_update(
     device = full_ids.device
     B = full_ids.size(0)
 
-    # Sequence-level shuffling (we mask out non-gen tokens inside)
+    # Sequence-level shuffling
     order = torch.randperm(B, device=device)
     for _ in range(ppo_epochs):
         for start in range(0, B, mini_batch_size):
