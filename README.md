@@ -101,10 +101,10 @@ This compares the **fine-tuned** vs **base GPT-2** on the IMDB test split, repor
 
 After training, evaluation on IMDB test prompts yielded:
 
-| Metric | Policy (Fine-tuned) | Base GPT-2 |
-|:--|:--:|:--:|
-| **Extrinsic sentiment mean** | +0.4168 | +0.2732 |
-| **% Positive generations** | 74.8 % | 65.6 % |
+| Metric                      | Policy (Fine-tuned) | Base GPT-2 | Range       |
+|:--------------------------- |:-------------------:|:----------:|:-----------:|
+| **Extrinsic sentiment mean**| +0.4168             | +0.2732    | [-1, +1]    |
+| **% Positive generations**  | 74.8%               | 65.6%      | [0%, 100%]  |
 
 **Per-sample results** (prompts, generations, and scores) are saved in `eval_results.csv`.
 
